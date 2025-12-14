@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGURAPP PERÚ - Seguridad Ciudadana en Tiempo Real</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        /* === MANUAL DE ESTILO OFICIAL SEGURAPP === */
+        :root {
+            --rojo-seguridad: #C62828;
+            --negro: #000000;
+            --blanco: #FFFFFF;
+            --gris-fondo: #F5F5F5;
+            --gris-texto: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--rojo-seguridad);
+            margin-bottom: 1rem;
+        }
+        
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--negro) 0%, #222 100%);
+            color: var(--blanco);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 5px solid var(--rojo-seguridad);
+        }
+        
+        header h1 {
+            color: var(--blanco);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* NAV */
+        nav {
+            background-color: var(--rojo-seguridad);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            background-color: var(--blanco);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* TABLA DE PRECIOS */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .price-table th {
+            background-color: var(--rojo-seguridad);
+            color: var(--blanco);
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .price-table td {
+            padding: 1rem;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .price-table tr:hover {
+            background-color: #fff8f8;
+        }
+        
+        .badge {
+            background-color: var(--rojo-seguridad);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        /* FORMULARIO */
+        form {
+            display: grid;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--gris-texto);
+        }
+        
+        input, textarea, select {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--rojo-seguridad);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--rojo-seguridad);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        button:hover {
+            background-color: #a71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
+        }
+        
+        /* MAPA */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--rojo-seguridad);
+        }
+        
+        .map-container iframe {
+            display: block;
+        }
+        
+        /* EQUIPO */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .member {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            border-radius: 10px;
+            border-top: 4px solid var(--rojo-seguridad);
+            transition: transform 0.3s;
+        }
+        
+        .member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member h3 {
+            color: var(--negro);
+            margin-top: 1rem;
+        }
+        
+        .member .role {
+            color: var(--rojo-seguridad);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+        
+        .logo-footer {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--blanco);
+            margin-bottom: 1rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .team {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1>SEGURAPP PERÚ</h1>
+            <p>Plataforma digital de alerta y prevención en seguridad ciudadana</p>
+            <p style="margin-top: 1rem; font-size: 1rem;">Conectando vecinos, protegiendo comunidades</p>
+        </div>
+    </header>
+    
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="nav-container">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#equipo">Nuestro Equipo</a>
+        </div>
+    </nav>
+    
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio">
+            <h2>Tu seguridad es nuestra prioridad</h2>
+            <p>En el Perú, la inseguridad ciudadana afecta a miles de personas diariamente. Según el INEI, más del 27% de peruanos ha sido víctima de algún delito. La desinformación y la falta de comunicación entre vecinos agravan el problema.</p>
+            <p><strong>SEGURAPP PERÚ</strong> es la solución tecnológica que conecta a los vecinos en tiempo real, permitiendo reportar incidentes, visualizar zonas de riesgo y recibir alertas inmediatas para prevenir delitos en tu comunidad.</p>
+        </section>
+        
+        <!-- SECCIÓN SERVICIOS Y PRECIOS -->
+        <section id="servicios">
+            <h2>Planes de Suscripción</h2>
+            <p>Elige el plan que mejor se adapte a las necesidades de seguridad de tu familia o comunidad.</p>
+            
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Precio Mensual</th>
+                        <th>Beneficios</th>
+                        <th>Recomendado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Básico</strong></td>
+                        <td>S/ 10</td>
+                        <td>Alertas en tiempo real, mapa de riesgo interactivo, reporte de incidentes básico</td>
+                        <td>Para individuos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Premium</strong></td>
+                        <td>S/ 25</td>
+                        <td>Todo lo Básico + historial de incidentes, notificaciones prioritarias, soporte 24/7, estadísticas personalizadas</td>
+                        <td>Para familias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vecinal</strong></td>
+                        <td>S/ 80</td>
+                        <td>Todo lo Premium + panel de control para juntas vecinales, reportes estadísticos avanzados, integración con serenazgo local, hasta 10 usuarios</td>
+                        <td><span class="badge">MÁS POPULAR</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><strong>Punto de Equilibrio:</strong> Solo necesitamos 120 usuarios para ser sostenibles.</p>
+                <p><strong>Análisis de riesgo:</strong> Incluso con costos 20% mayores, seguimos siendo viables.</p>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes preguntas sobre nuestros servicios? ¿Quieres implementar SEGURAPP en tu distrito? Escríbenos.</p>
+            
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Gabriel Rojas">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+51 XXX XXX XXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="distrito">Distrito de interés</label>
+                    <select id="distrito" name="distrito">
+                        <option value="">Selecciona un distrito</option>
+                        <option value="ilo">Ilo, Moquegua</option>
+                        <option value="miraflores">Miraflores, Lima</option>
+                        <option value="sanjuan">San Juan de Lurigancho</option>
+                        <option value="arequipa">Arequipa Centro</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Describe tu consulta o interés..."></textarea>
+                </div>
+                
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+        
+        <!-- SECCIÓN UBICACIÓN -->
+        <section id="ubicacion">
+            <h2>Nuestra Ubicación Central</h2>
+            <p>Nuestra oficina principal se encuentra en Ilo, Moquegua. Desde aquí coordinamos el desarrollo y expansión de SEGURAPP a nivel nacional.</p>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122168.4613689443!2d-71.38864407554081!3d-17.648037871596518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91449f0eac7fd0d5%3A0xc38d2269589ffae5!2sIlo%2C%20Moquegua!5e0!3m2!1ses!2spe!4v1710200000000!5m2!1ses!2spe" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+            <div style="margin-top: 1.5rem;">
+                <p><strong>Dirección:</strong> Av. Costanera 123, Ilo, Moquegua</p>
+                <p><strong>Teléfono:</strong> (053) 456-789</p>
+                <p><strong>Horario:</strong> Lunes a Viernes 8:00 am - 6:00 pm</p>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN EQUIPO -->
+        <section id="equipo">
+            <h2>Nuestro Equipo Fundador</h2>
+            <p>Conoce al equipo detrás de SEGURAPP PERÚ. Juntos combinamos experiencia en tecnología, negocios y diseño para crear una solución real a un problema nacional.</p>
+            
+            <div class="team">
+                <div class="member">
+                    <h3>Gabriel José Rojas Urbina</h3>
+                    <p class="role">CEO - Director Ejecutivo</p>
+                    <p>Responsable de la estrategia general, finanzas y relaciones con inversionistas. Ingeniero Industrial con especialización en emprendimiento.</p>
+                    <p><strong>Contacto:</strong> gabriel.rojas@segurapp.pe</p>
+                </div>
+                
+                <div class="member">
+                    <h3>Santiago David Cabrera Díaz</h3>
+                    <p class="role">CTO - Directora de Tecnología</p>
+                    <p>Lidera el desarrollo web, infraestructura tecnológica y seguridad de datos. Ingeniera de Sistemas con 5 años de experiencia en desarrollo de plataformas.</p>
+                    <p><strong>Contacto:</strong> maria.lopez@segurapp.pe</p>
+                </div>
+                
+                <div class="member">
+                    <h3>************</h3>
+                    <p class="role">CMO - Director de Marketing</p>
+                    <p>Encargado de la identidad de marca, marketing digital y expansión comercial. Comunicador Social con maestría en Marketing Digital.</p>
+                    <p><strong>Contacto:</strong> carlos.mendoza@segurapp.pe</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="logo-footer">SEGURAPP PERÚ</div>
+            <p>Plataforma digital de alerta y prevención en seguridad ciudadana</p>
+            <p>© 2025 SEGURAPP PERÚ. Todos los derechos reservados.</p>
+            <p>Proyecto Final EPT - Diseñando el Futuro del Emprendimiento</p>
+            <p>Contacto general: info@segurapp.pe | Teléfono: (01) 234-5678</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Script simple para el formulario
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos en las próximas 24 horas.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
